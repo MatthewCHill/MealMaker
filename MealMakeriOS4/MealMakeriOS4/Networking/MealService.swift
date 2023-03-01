@@ -37,10 +37,10 @@ struct MealService {
     static func fetchMealsInCategory(forCategory category: GoodFood, completion: @escaping (Result<[GoodMeals], NetworkError>) -> Void) {
         
         guard let baseURL = URL(string: Constants.MealService.mealsInCategoriesBaseURL) else {completion(.failure(.invalidURL)); return}
-        var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         let categoryQueryItem = URLQueryItem(name: Constants.MealService.categoryQueryKey, value: category.categoryName)
-        components?.queryItems = [categoryQueryItem]
-        guard let finalURL = components?.url else {completion(.failure(.invalidURL)) ; return}
+        urlComponents?.queryItems = [categoryQueryItem]
+        guard let finalURL = urlComponents?.url else {completion(.failure(.invalidURL)) ; return}
         print(finalURL)
         
         URLSession.shared.dataTask(with: finalURL) { data, response, error in
@@ -57,6 +57,41 @@ struct MealService {
                 let topLevel = try JSONDecoder().decode(MealTopLevelDictionary.self, from: data)
                 completion(.success(topLevel.meals))
                 
+            } catch {
+                completion(.failure(.unableToDecode))
+                return
+            }
+        }.resume()
+    }
+    
+    static func fetchRecipe(forMeal meal: GoodMeals, completion: @escaping (Result<Recipe, NetworkError>) -> Void) {
+        
+        guard let baseURL = URL(string: Constants.MealService.fetchRecipeBaseURL) else { completion(.failure(.invalidURL)); return}
+        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        let recipeQueryItem = URLQueryItem(name: Constants.MealService.recipeQueryKey, value: meal.mealID)
+        urlComponents?.queryItems = [recipeQueryItem]
+        
+        guard let finalURL = urlComponents?.url else {completion(.failure(.invalidURL)); return}
+        print(finalURL)
+        
+        URLSession.shared.dataTask(with: finalURL) { data, response, error in
+            
+            if let error = error {
+                completion(.failure(.thrownError(error)))
+                return
+            }
+            if let response = response as? HTTPURLResponse {
+                print(response.statusCode)
+            }
+            guard let data = data else {completion(.failure(.noData)); return}
+            
+            do {
+                let topLevel = try JSONDecoder().decode(RecipeTopLevelDictionary.self, from: data)
+                if let recipe = topLevel.meals.first {
+                    completion(.success(recipe))
+                } else {
+                    completion(.failure(.emptyArray))
+                }
             } catch {
                 completion(.failure(.unableToDecode))
                 return
