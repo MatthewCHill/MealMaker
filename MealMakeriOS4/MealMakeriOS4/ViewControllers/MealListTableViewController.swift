@@ -11,11 +11,30 @@ class MealListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchMealsInCategory()
     }
     
     // MARK: - Properties
     var category: GoodFood?
     var goodMealArray: [GoodMeals] = []
+    
+    // MARK: - Functions
+    func fetchMealsInCategory() {
+        guard let category = category else {return}
+        MealService.fetchMealsInCategory(forCategory: category) { [weak self] result in
+            switch result {
+                
+            case .success(let meals):
+                self?.goodMealArray = meals
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+                
+            case .failure(let error):
+                print(error.errorDescription ?? "Error")
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -23,14 +42,19 @@ class MealListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return goodMealArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mealCell", for: indexPath)
 
-        // Configure the cell...
+        let meal = goodMealArray[indexPath.row]
+        
+        var config = cell.defaultContentConfiguration()
+        config.text = meal.mealName
+        config.secondaryText = meal.mealID
+        cell.contentConfiguration = config
 
         return cell
     }

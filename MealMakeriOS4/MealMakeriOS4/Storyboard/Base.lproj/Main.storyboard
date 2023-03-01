@@ -24,7 +24,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="VsW-Zk-xep" kind="show" id="bNQ-sh-rOL"/>
+                                    <segue destination="VsW-Zk-xep" kind="show" identifier="toMealVC" id="bNQ-sh-rOL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

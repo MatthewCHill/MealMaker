@@ -30,7 +30,7 @@ class CategoryListTableViewController: UITableViewController {
                 }
                 
             case .failure(let error):
-                print(error.errorDescription ?? "Chase Hill")
+                print(error.errorDescription ?? "Error")
             }
         }
     }
