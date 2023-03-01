@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		34CABEB129AFAD2500A13758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABEB029AFAD2500A13758 /* AppDelegate.swift */; };
 		34CABEB329AFAD2500A13758 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABEB229AFAD2500A13758 /* SceneDelegate.swift */; };
-		34CABEB529AFAD2500A13758 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABEB429AFAD2500A13758 /* ViewController.swift */; };
 		34CABEB829AFAD2500A13758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CABEB629AFAD2500A13758 /* Main.storyboard */; };
 		34CABEBA29AFAD2700A13758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CABEB929AFAD2700A13758 /* Assets.xcassets */; };
 		34CABEBD29AFAD2700A13758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CABEBB29AFAD2700A13758 /* LaunchScreen.storyboard */; };
+		34CABEC829AFAE3900A13758 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABEC729AFAE3900A13758 /* Category.swift */; };
+		34CABECA29AFB06D00A13758 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABEC929AFB06D00A13758 /* Meal.swift */; };
+		34CABECD29AFB1AA00A13758 /* MealService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABECC29AFB1AA00A13758 /* MealService.swift */; };
+		34CABECF29AFB2E400A13758 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABECE29AFB2E400A13758 /* NetworkError.swift */; };
+		34CABED129AFB48400A13758 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CABED029AFB48400A13758 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		34CABEAD29AFAD2500A13758 /* MealMakeriOS4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealMakeriOS4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CABEB029AFAD2500A13758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CABEB229AFAD2500A13758 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		34CABEB429AFAD2500A13758 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34CABEB729AFAD2500A13758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34CABEB929AFAD2700A13758 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34CABEBC29AFAD2700A13758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34CABEBE29AFAD2700A13758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34CABEC729AFAE3900A13758 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		34CABEC929AFB06D00A13758 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		34CABECC29AFB1AA00A13758 /* MealService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealService.swift; sourceTree = "<group>"; };
+		34CABECE29AFB2E400A13758 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		34CABED029AFB48400A13758 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +64,10 @@
 		34CABEAF29AFAD2500A13758 /* MealMakeriOS4 */ = {
 			isa = PBXGroup;
 			children = (
+				34CABECB29AFB19A00A13758 /* Networking */,
+				34CABEC629AFAE2B00A13758 /* Model */,
+				34CABEC529AFAE1C00A13758 /* Storyboard */,
 				34CABEC429AFAD3600A13758 /* SupportingFiles */,
-				34CABEB429AFAD2500A13758 /* ViewController.swift */,
-				34CABEB629AFAD2500A13758 /* Main.storyboard */,
-				34CABEBB29AFAD2700A13758 /* LaunchScreen.storyboard */,
 			);
 			path = MealMakeriOS4;
 			sourceTree = "<group>";
@@ -73,6 +81,34 @@
 				34CABEBE29AFAD2700A13758 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		34CABEC529AFAE1C00A13758 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				34CABEB629AFAD2500A13758 /* Main.storyboard */,
+				34CABEBB29AFAD2700A13758 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		34CABEC629AFAE2B00A13758 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				34CABEC729AFAE3900A13758 /* Category.swift */,
+				34CABEC929AFB06D00A13758 /* Meal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		34CABECB29AFB19A00A13758 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				34CABECC29AFB1AA00A13758 /* MealService.swift */,
+				34CABECE29AFB2E400A13758 /* NetworkError.swift */,
+				34CABED029AFB48400A13758 /* Constants.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34CABEB529AFAD2500A13758 /* ViewController.swift in Sources */,
+				34CABECA29AFB06D00A13758 /* Meal.swift in Sources */,
 				34CABEB129AFAD2500A13758 /* AppDelegate.swift in Sources */,
+				34CABEC829AFAE3900A13758 /* Category.swift in Sources */,
+				34CABECF29AFB2E400A13758 /* NetworkError.swift in Sources */,
+				34CABED129AFB48400A13758 /* Constants.swift in Sources */,
+				34CABECD29AFB1AA00A13758 /* MealService.swift in Sources */,
 				34CABEB329AFAD2500A13758 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
