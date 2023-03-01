@@ -10,8 +10,8 @@ import Foundation
 struct Constants {
     
     struct MealService {
-        static let allCategoriesBaseURL = "www.themealdb.com/api/json/v1/1/categories.php"
-        static let mealsInCategoriesBaseURL = "www.themealdb.com/api/json/v1/1/filter.php"
+        static let allCategoriesBaseURL = "https://www.themealdb.com/api/json/v1/1/categories.php"
+        static let mealsInCategoriesBaseURL = "https://www.themealdb.com/api/json/v1/1/filter.php"
         static let categoryQueryKey = "c"
     }
 }
