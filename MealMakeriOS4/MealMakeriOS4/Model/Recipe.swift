@@ -72,7 +72,7 @@ extension Recipe {
                   let measurement = try? measurementsConatiner?.decode(String.self, forKey: MesurementsCodingKeys.allCases[$0.offset]),
                   !name.isEmpty,
                   !measurement.isEmpty
-            else { return }
+            else { return nil }
             
             return Ingredient(name: name, measurement: measurement)
         }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct MealService {
     
@@ -96,6 +97,31 @@ struct MealService {
                 completion(.failure(.unableToDecode))
                 return
             }
+        }.resume()
+    }
+    
+    static func fetchImage(for item: String?, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        
+        guard let item = item else { completion(.success(UIImage(named: "IMG_1654")!)); return }
+        guard let finalURL = URL(string: item) else {completion(.failure(.invalidURL)); return}
+        print(finalURL)
+        
+        URLSession.shared.dataTask(with: finalURL) { data, response, error in
+            if let error = error {
+                completion(.failure(.thrownError(error)))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                  (200...299).contains(response.statusCode) else {
+                      completion(.failure(.invalidStatusCode))
+                return
+                  }
+            
+            guard let data = data, !data.isEmpty else {completion(.failure(.noData)); return}
+            
+            guard let image = UIImage(data: data) else {completion(.failure(.unableToDecode)); return}
+            completion(.success(image))
         }.resume()
     }
 }
